@@ -23,9 +23,14 @@
       <div class="content uk-margin-top" v-if="openFields">
         <div class="fields">
           <div class="field uk-margin-bottom" v-for="(field,index) in structure.fields" :key="index">
-            <div class="heading" @click="() => {field.open = !field.open}">
+            <div class="heading">
+              <div class="order">
+                <div>{{index}}</div>
+                <button class="arrowUp" v-if="index != 0" @click.prevent="move(index,index-1)"> ↥ </button>
+                <button class="arrowDown" v-if="index != structure.fields.length-1" @click.prevent="move(index,index+1)"> ↧ </button>
+              </div>
               <h4>{{field.name ? field.name : (field.type == 'testo' ? 'Testo html' : 'Nuovo input')}}</h4>
-              <a href="#" class="uk-button uk-button-primary uk-button-small">{{field.open ? 'Close' : 'Open'}}</a>
+              <a href="#" class="uk-button uk-button-primary uk-button-small" @click="() => {field.open = !field.open}">{{field.open ? 'Close' : 'Open'}}</a>
             </div>
             <div class="content" v-if="field.open && field.type != 'testo'">
               <div class="uk-margin-top">
@@ -215,7 +220,10 @@ export default {
     },
     clearField(index){
       this.structure.fields[index].name = null;
-    }
+    },
+    move(o,n){
+      this.structure.fields.splice(n, 0, this.structure.fields.splice(o, 1)[0]);
+    },
   },
   watch: {
     'structure' : {
@@ -294,6 +302,27 @@ export default {
               display: block;
               margin-left: 10px;
               width: 100px;
+            }
+            .order{
+              display: flex;
+              align-items: center;
+              min-width: 100px;
+              > div {
+                min-width: 20px;
+              }
+              button{
+                background-color: #09b3af;
+                cursor: pointer;
+                outline: none;
+                height: 30px;
+                width: 30px;
+                border: 0;
+                border-radius: 2px;
+                color: #fff;
+                &.arrowUp{
+                  margin-right: 5px;
+                }
+              }
             }
           }
           .content{
