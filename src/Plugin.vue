@@ -47,7 +47,7 @@
                 <label class="uk-form-label" :for="'field-label-' + index">Label</label>
                 <input type="text" placeholder="label" :id="'field-label-' + index" v-model="field.label">
               </div>
-              <div class="uk-margin-top" v-if="field.type != 'privacy' && field.type != 'file' && field.type != 'checkbox' && field.type != 'select' && field.type != 'radio'">
+              <div class="uk-margin-top" v-if="field.type != 'privacy' && field.type != 'submit' && field.type != 'file' && field.type != 'checkbox' && field.type != 'select' && field.type != 'radio'">
                 <label class="uk-form-label" :for="'field-placeholder-' + index">Placeholder</label><input type="text" placeholder="placeholder" :id="'field-placeholder-' + index" v-model="field.placeholder">
               </div>
 
@@ -83,7 +83,7 @@
                 <a href="#" class=" uk-button uk-button-primary uk-button-small" @click.prevent="addRadio(index)">Add option</a>
               </div>
 
-              <div class="uk-margin-top">
+              <div class="uk-margin-top" v-if="field.type != 'submit'">
                 <input type="checkbox" v-model="field.required" :id="'field-required-' + index"> <label class="uk-margin-left" :for="'field-required-' + index">Campo obbligatgorio</label>
               </div>
               <div class="uk-margin-top deleteAction">
@@ -158,7 +158,8 @@ export default {
         'privacy',
         'checkbox',
         'file',
-        'testo'
+        'testo',
+        'submit'
       ],
       openFields : false,
       openConfigs : false,
