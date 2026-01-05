@@ -1,21 +1,54 @@
-.DS_Store
+# Dependencies
 node_modules
-/dist
 
-# local env files
-.env.local
-.env.*.local
+# Logs
+*.log*
 
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Temp directories
+.temp
+.tmp
+.cache
 
-# Editor directories and files
+# Yarn
+**/.yarn/cache
+**/.yarn/*state*
+
+
+# Nuxt
+.nuxt
+.output
+.data
+.vercel_build_output
+.build-*
+.netlify
+
+# Env
+.env
+
+# Testing
+reports
+coverage
+*.lcov
+.nyc_output
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Intellij idea
+*.iml
 .idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw*
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
