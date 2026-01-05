@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-const { field, modelValue } = defineProps(['blok', 'field', 'modelValue'])
+const { field } = defineProps(['blok', 'field', 'modelValue'])
 const model = defineModel()
 const emit = defineEmits(['addEvalFunction'])
 useField(model, field, emit)

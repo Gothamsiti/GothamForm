@@ -1,14 +1,8 @@
 <template lang="pug">
 .fieldFlexGroup
-	| {{ blok }}
+    | {{ blok }}
 </template>
 
 <script setup>
-const { blok } = defineProps(['blok'])
+defineProps(['blok'])
 </script>
-
-<style lang="scss">
-.fieldFlexGroup{
-
-}
-</style>

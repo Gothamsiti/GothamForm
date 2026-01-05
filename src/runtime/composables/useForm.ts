@@ -1,4 +1,7 @@
+import { ref } from '#imports'
+
 export const useForm = (fields, uid) => {
+  if(!fields?.length) return { submitted : false, submitting: false, error: false};
   const evalFunctions = ref([])
   const submitting = ref(false)
   const submitted = ref(undefined)
@@ -15,7 +18,6 @@ export const useForm = (fields, uid) => {
       }
       arr.push(field)
     }
-
     fields = arr
   }
 
@@ -24,7 +26,7 @@ export const useForm = (fields, uid) => {
   const addEvalFunction = f => evalFunctions.value.push(f)
   const getPayload = (fields) => {
     const payload = {}
-    let formData = new FormData()
+    const formData = new FormData()
 
     const handleFieldValue = (field) => {
       if (field.name) {
@@ -67,7 +69,7 @@ export const useForm = (fields, uid) => {
     else {
       event.preventDefault()
 
-      const { payload, formData } = getPayload(fields)
+      const { formData } = getPayload(fields)
 
       try {
         submitting.value = true
@@ -94,7 +96,7 @@ export const useForm = (fields, uid) => {
       field.value = undefined
     }
     // il nextTick non è sufficiente, ricorro ad un timeout in questo caso.
-    setTimeout(() => { window.clearingFields = false }, 50)
+    setTimeout(() => window.clearingFields = false, 50)
   }
   return { submitting, submitted, formSubmit, addEvalFunction, error, formUid }
 }

@@ -12,7 +12,7 @@
       maxlength="2"
       size="2"
       v-model="day"
-      :placeholder="$__('GG')"
+      :placeholder="$__('FormDateTextGG')"
       inputmode="numeric"
       @input="onDayInput"
       @keydown.backspace="onBackspace('day')"
@@ -23,7 +23,7 @@
       maxlength="2"
       size="2"
       v-model="month"
-      :placeholder="$__('MM')"
+      :placeholder="$__('FormDateTextMM')"
       inputmode="numeric"
       @input="onMonthInput"
       @keydown.backspace="onBackspace('month')"
@@ -34,7 +34,7 @@
       maxlength="4"
       size="4"
       v-model="year"
-      :placeholder="$__('AAAA')"
+      :placeholder="$__('FormDateTextAAAA')"
       inputmode="numeric"
       @input="onYearInput"
       @keydown.backspace="onBackspace('year')"
@@ -67,7 +67,7 @@ if (model.value) {
 }
 
 // Funzione per aggiornare model.value in formato ISO YYYY-MM-DD
-function updateModel() {
+const updateModel = () => {
   if (year.value.length === 4 && month.value.length > 0 && day.value.length > 0) {
     model.value = `${year.value.padStart(4, '0')}-${month.value.padStart(2, '0')}-${day.value.padStart(2, '0')}`
   }
@@ -77,7 +77,7 @@ function updateModel() {
 }
 
 // Funzione per filtrare input numerici e validare giorno
-function onDayInput(e) {
+const onDayInput = () => {
   // Rimuovo tutti i caratteri non numerici
   day.value = day.value.replace(/\D/g, '')
 
@@ -97,7 +97,7 @@ function onDayInput(e) {
 }
 
 // Funzione per filtrare input numerici e validare mese
-function onMonthInput() {
+const onMonthInput = () => {
   // Solo numeri
   month.value = month.value.replace(/\D/g, '')
 
@@ -129,18 +129,13 @@ function onMonthInput() {
 }
 
 // Funzione per filtrare input numerici per l'anno
-function onYearInput(e) {
+const onYearInput = () => {
   year.value = year.value.replace(/\D/g, '')
-
-  if (year.value.length === 4) {
-    // Potresti aggiungere qui eventuali controlli sull'anno
-  }
-
   updateModel()
 }
 
 // Supporto per backspace: se campo vuoto torna al campo precedente
-function onBackspace(fieldName) {
+const onBackspace = (fieldName) => {
   return (e) => {
     const target = e.target
     if (e.key === 'Backspace' && target.value.length === 0) {
@@ -154,7 +149,6 @@ function onBackspace(fieldName) {
     }
   }
 }
-
 useField(model, field, emit)
 
 // Sincronizza se model cambia esternamente
@@ -168,4 +162,6 @@ watch(model, (newVal) => {
     }
   }
 })
+
+defineExpose({ onDayInput, onMonthInput, onYearInput, onBackspace })
 </script>

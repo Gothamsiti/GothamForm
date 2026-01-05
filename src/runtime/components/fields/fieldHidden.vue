@@ -1,9 +1,9 @@
 <template lang="pug">
 .fieldHidden(
-	v-if="field && field.visible"
-	:class="{error:field.error,compiled: field.compiled},field.name"
+    v-if="field && field.visible"
+    :class="{error:field.error,compiled: field.compiled},field.name"
 )
-	input(type="hidden" :id="field.name" :name="field.name")
+    input(type="hidden" :id="field.name" :name="field.name")
 </template>
 
 <script setup>

@@ -3,11 +3,5 @@
 </template>
 
 <script setup>
-const { blok } = defineProps(['blok'])
+defineProps(['blok'])
 </script>
-
-<style lang="scss">
-.fieldCustomFunction{
-
-}
-</style>

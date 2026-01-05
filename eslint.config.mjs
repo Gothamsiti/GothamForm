@@ -19,6 +19,7 @@ export default createConfigForNuxt({
     {
       rules: {
         'no-useless-catch': 'off',
+        'vue/require-prop-types': 'off',
         // 'no-undef': 'off',
       },
     },

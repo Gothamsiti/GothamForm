@@ -1,17 +1,17 @@
 <template lang="pug">
 .input.fieldText(
-	v-if="field && field.visible"
-	:class="{error:field.error,compiled: field.compiled},field.name"
+    v-if="field && field.visible"
+    :class="{error:field.error,compiled: field.compiled},field.name"
 )
-	label(v-if="field.label && !field.hideLabel" :for="field.name")
-		span(v-html="field.label+(field.required?'*':'')")
-	input(
-		type="text"
-		:id="field.name"
-		:name="field.name"
-		v-model="model"
-		:placeholder="field.placeholder ? field.placeholder + (field.required ? '*' : '' ) : ''"
-	)
+    label(v-if="field.label && !field.hideLabel" :for="field.name")
+        span(v-html="field.label+(field.required?'*':'')")
+    input(
+        type="text"
+        :id="field.name"
+        :name="field.name"
+        v-model="model"
+        :placeholder="field.placeholder ? field.placeholder + (field.required ? '*' : '' ) : ''"
+    )
 </template>
 
 <script setup>

@@ -1,9 +1,5 @@
-import { dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { defineNuxtModule, createResolver, addImportsDir, addComponentsDir } from '@nuxt/kit'
 import type { Resolver } from '@nuxt/kit'
-
-const currentDir = dirname(fileURLToPath(import.meta.url))
 
 export interface ModuleOptions {
   submitEndpoint: string
@@ -16,6 +12,7 @@ const addComponents = (resolver: Resolver) => {
     path: resolver.resolve('runtime/components'),
     prefix: 'Form',
     pathPrefix: false,
+    global: true,
   })
 }
 
@@ -28,7 +25,7 @@ export default defineNuxtModule<ModuleOptions>({
     submitEndpoint: '/api/form/submit',
   },
   setup(_options, _nuxt) {
-    _nuxt.options.runtimeConfig.gothamstoryblok = { ..._options }
+    _nuxt.options.runtimeConfig.gothamform = { ..._options }
     const resolver = createResolver(import.meta.url)
     // addPlugins(resolver)
     // addServerRoutes(resolver)

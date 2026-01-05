@@ -1,25 +1,25 @@
 <template lang='pug'>
-.input.fieldPrivacy(
+.input.fieldCheckbox(
     v-if="field && field.visible"
     :class="{error:field.error,compiled: field.compiled},field.name"
 )
     label(v-if="field.label" :for="field.name")
         span(v-html="field.label+(field.required?'*':'')")
     .inputContent
-        label.text( @click="() => { checkbox?.click() } "  :for="field.name")
+        label.text( @click="() => { _checkbox?.click() } "  :for="field.name")
             StoryblokRichText(:doc="field.text")
-        .fakeCheck(@click="() => { checkbox?.click() } ")
+        .fakeCheck(@click="() => { _checkbox?.click() } ")
         input(
             :id="field.name"
             :name="field.name"
             type="checkbox"
             v-model="model"
-            ref="checkbox"
+            ref="_checkbox"
         )
 </template>
 
 <script setup>
-const checkbox = ref()
+const _checkbox = ref()
 const { field } = defineProps(['blok', 'field', 'modelValue'])
 const model = defineModel('model')
 const emit = defineEmits(['addEvalFunction'])
