@@ -24,9 +24,9 @@
 import * as _formatlocales from 'date-fns/locale'
 
 const _format = ref('dd MMM yy')
-const { field } = defineProps(['blok', 'field', 'modelValue'])
+const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
 const model = defineModel('model')
 const emit = defineEmits(['addEvalFunction'])
 const { currentLanguage: _currentLanguage } = useLanguage()
-useField(model, field, emit)
+useField(model, field, emit, formSlug)
 </script>

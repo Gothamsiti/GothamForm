@@ -14,7 +14,7 @@
 
 <script setup>
 const _inputFile = ref()
-const { field } = defineProps(['blok', 'field', 'modelValue'])
+const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
 const model = defineModel('model')
 const emit = defineEmits(['addEvalFunction'])
 const _fileChange = (f) => {
@@ -23,5 +23,5 @@ const _fileChange = (f) => {
     model.value = target.files[0]
   }
 }
-useField(model, field, emit)
+useField(model, field, emit, formSlug)
 </script>

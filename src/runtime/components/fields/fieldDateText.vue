@@ -44,7 +44,7 @@
 <script setup>
 import { ref, watch, nextTick } from 'vue'
 
-const { field } = defineProps(['blok', 'field', 'modelValue'])
+const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
 const model = defineModel('model')
 const emit = defineEmits(['addEvalFunction'])
 
@@ -149,7 +149,7 @@ const onBackspace = (fieldName) => {
     }
   }
 }
-useField(model, field, emit)
+useField(model, field, emit, formSlug)
 
 // Sincronizza se model cambia esternamente
 watch(model, (newVal) => {

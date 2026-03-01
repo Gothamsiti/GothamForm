@@ -20,8 +20,8 @@
 
 <script setup>
 const _checkbox = ref()
-const { field } = defineProps(['blok', 'field', 'modelValue'])
+const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
 const model = defineModel('model')
 const emit = defineEmits(['addEvalFunction'])
-useField(model, field, emit)
+useField(model, field, emit, formSlug)
 </script>

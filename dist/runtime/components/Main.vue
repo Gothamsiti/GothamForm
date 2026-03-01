@@ -18,7 +18,7 @@ section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submittedCompu
 </template>
 
 <script setup>
-const { blok, storyUuid } = defineProps(["blok", "storyUuid"]);
+const { blok, storyUuid, addEvalFunction } = defineProps(["blok", "storyUuid", "addEvalFunction"]);
 const fields = ref(void 0);
 const formId = ref(void 0);
 if (storyUuid || blok.form) {

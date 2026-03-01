@@ -1,7 +1,7 @@
 <template lang="pug">
 .input.fieldRadioGroup(
     v-if="field && field.visible"
-    :class="{ error: field.error, compiled: field.compiled }"
+    :class="[{ error: field.error, compiled: field.compiled} ,field.class]"
 )
     .inputOption(
         v-for="option in field.options"
@@ -15,14 +15,15 @@
             v-model="model"
         )
         label.text(:for="`${field.name}-${option.value}`")
+            Icon(v-if="option.icon" :name="option.icon")
             span(v-html="option.label")
 </template>
 
 <script setup>
-const { field } = defineProps(['blok', 'field', 'modelValue'])
+const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
 const model = defineModel()
 const emit = defineEmits(['addEvalFunction'])
-useField(model, field, emit)
+useField(model, field, emit, formSlug)
 </script>
 
 <style lang="scss">

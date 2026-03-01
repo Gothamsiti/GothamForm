@@ -1,17 +1,14 @@
 <template lang='pug'>
 section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submittedComputed}")
+  | {{ blok}}
   .system.message(v-if="_submittedComputed")
       h4(v-html="$__('FormSubmitOkTitle')")
       p {{ $__('FormSubmitOkText') }}
   template(v-else)
       form(@submit="formSubmit")
           template(v-if="!_submittedComputed" v-for="field of fields" :key="field._uid")
-              .flexGroup(v-if="field.component == 'fieldFlexGroup'")
-                  template(v-for="subfield of field.fields" :key="subfield._uid")
-                      StoryblokComponent( v-if="subfield.name" v-model:model="subfield.value" :blok="{component:subfield.component,originalblok:subfield}" :field="subfield" @addEvalFunction="_addEvalFunction" v-editable="subfield")
-                      StoryblokComponent( v-else :blok="{component:subfield.component,originalblok:subfield}" :field="subfield" v-editable="subfield")
-              StoryblokComponent( v-else-if="field.name" v-model:model="field.value" :blok="{component:field.component,originalblok:field}" :field="field" @addEvalFunction="_addEvalFunction" v-editable="field")
-              StoryblokComponent( v-else :blok="{component:field.component,originalblok:field}" :field="field" v-editable="field")
+              StoryblokComponent( v-if="field.name" v-model:model="field.value" :blok="{component:field.component,originalblok:field}" :field="field" :formSlug="formSlug" @addEvalFunction="_addEvalFunction" v-editable="field")
+              StoryblokComponent( v-else :blok="{component:field.component,originalblok:field}" :field="field" v-editable="field" :formSlug="formSlug")
           .error.system.message(v-if="_error")
               h4(v-html="$__('FormSubmitKoTitle')")
               p {{ $__('FormSubmitKoText') }}
@@ -21,6 +18,7 @@ section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submittedCompu
 const { blok, storyUuid } = defineProps(['blok', 'storyUuid'])
 const fields = ref(undefined)
 const formId = ref(undefined)
+const formSlug = ref(undefined)
 
 if (storyUuid || blok.form) {
   const uuid = storyUuid || blok.form
@@ -33,7 +31,8 @@ if (storyUuid || blok.form) {
   })
   if (story?.value?.content?.component !== 'FormMain') throw createError({ statusCode: 500, statusMessage: 'story is not a form', fatal: false })
   fields.value = story?.value?.content.fields
-  formId.value = story.value.uuid
+  formId.value = story?.value?.uuid
+  formSlug.value = story?.value?.slug
 }
 else if (blok) {
   fields.value = blok.fields
