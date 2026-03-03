@@ -1,4 +1,4 @@
-import debounce from 'lodash.debounce'
+import { useDebounceFn } from '@vueuse/core'
 import { watch, computed } from 'vue'
 import { useState } from '#app'
 
@@ -31,7 +31,7 @@ export const useField = (model, field, emit, formSlug) => {
       gobalFieldsStore.value[formSlug][field.name] = field.value
     }
     if (emit) emit('addEvalFunction', evalField)
-    watch(model, debounce(evalField))
+    watch(model, useDebounceFn(evalField, 300))
   }
   const hide = computed(() => {
     if (!field.hideCondition) return true
