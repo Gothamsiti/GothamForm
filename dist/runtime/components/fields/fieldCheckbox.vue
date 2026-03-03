@@ -19,7 +19,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { useField } from "../../composables/useField";
 const _checkbox = ref();
 const { field, formSlug } = defineProps(["blok", "field", "formSlug"]);
