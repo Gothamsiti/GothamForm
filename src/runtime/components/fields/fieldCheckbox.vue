@@ -19,6 +19,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useField } from '../../composables/useField'
 
 const _checkbox = ref()
