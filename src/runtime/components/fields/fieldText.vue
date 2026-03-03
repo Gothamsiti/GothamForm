@@ -15,6 +15,8 @@
 </template>
 
 <script setup>
+import { useField } from '../composables/useField'
+
 const { field, formSlug } = defineProps(['field', 'formSlug'])
 const model = defineModel('model')
 const emit = defineEmits(['addEvalFunction'])
