@@ -31,6 +31,6 @@ export default defineNuxtModule<ModuleOptions>({
     // addServerRoutes(resolver)
     addComposables(resolver)
     addComponents(resolver)
-    addPlugin(resolver.resolve("./runtime/plugins/vueDatePicker.client.js"))
+    addPlugin(resolver.resolve('./runtime/plugins/vueDatePicker.client.js'))
   },
 })

@@ -1,6 +1,6 @@
 <template lang="pug">
 .input.fieldDateText(
-  v-if="field && field.visible && hide"
+  v-if="field && field.visible && _hide"
   :class="{error:field.error,compiled: field.compiled},field.name"
 )
   label(v-if="field.label && !field.hideLabel" :for="field.name")
@@ -47,6 +47,7 @@ import { ref, watch, nextTick } from 'vue'
 const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
 const model = defineModel('model')
 const emit = defineEmits(['addEvalFunction'])
+const { hide: _hide } = useField(model, field, emit, formSlug)
 
 const day = ref('')
 const month = ref('')
@@ -149,7 +150,6 @@ const onBackspace = (fieldName) => {
     }
   }
 }
-const { hide } = useField(model, field, emit, formSlug)
 
 // Sincronizza se model cambia esternamente
 watch(model, (newVal) => {

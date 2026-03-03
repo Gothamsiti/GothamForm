@@ -1,6 +1,6 @@
 <template lang='pug'>
 .input.fieldCheckbox(
-    v-if="field && field.visible && hide"
+    v-if="field && field.visible && _hide"
     :class="{error:field.error,compiled: field.compiled},field.name"
 )
     label(v-if="field.label" :for="field.name")
@@ -23,5 +23,5 @@ const _checkbox = ref()
 const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
 const model = defineModel('model')
 const emit = defineEmits(['addEvalFunction'])
-const { hide } = useField(model, field, emit, formSlug)
+const { hide: _hide } = useField(model, field, emit, formSlug)
 </script>

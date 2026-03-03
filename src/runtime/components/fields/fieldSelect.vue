@@ -1,6 +1,6 @@
 <template lang="pug">
 .input.fieldSelect(
-    v-if="field && field.visible && hide"
+    v-if="field && field.visible && _hide"
     :class="{error:field.error,compiled: field.compiled},field.name"
 )
     label(v-if="field.label && !field.hideLabel" :for="field.name")
@@ -28,5 +28,5 @@ const emit = defineEmits(['addEvalFunction'])
 watch(() => field.value, () => {
   model.value = field.value
 })
-const { hide } = useField(model, field, emit, formSlug)
+const { hide: _hide } = useField(model, field, emit, formSlug)
 </script>

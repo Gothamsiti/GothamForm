@@ -1,6 +1,6 @@
 <template lang="pug">
 .input.fieldText(
-    v-if="field && field.visible && hide"
+    v-if="field && field.visible && _hide"
     :class="{error:field.error,compiled: field.compiled},field.name"
 )
     label(v-if="field.label && !field.hideLabel" :for="field.name")
@@ -18,5 +18,5 @@
 const { field, formSlug } = defineProps(['field', 'formSlug'])
 const model = defineModel('model')
 const emit = defineEmits(['addEvalFunction'])
-const { hide,gobalFieldsStore } = useField(model, field, emit, formSlug)
+const { hide: _hide } = useField(model, field, emit, formSlug)
 </script>

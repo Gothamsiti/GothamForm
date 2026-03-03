@@ -1,6 +1,6 @@
 <template lang="pug">
 .input.fieldFile(
-    v-if="field && field.visible && hide"
+    v-if="field && field.visible && _hide"
     :class="{error:field.error,compiled: field.compiled},field.name"
     @click="_inputFile.click()"
 )
@@ -23,5 +23,5 @@ const _fileChange = (f) => {
     model.value = target.files[0]
   }
 }
-const { hide } = useField(model, field, emit, formSlug)
+const { hide: _hide } = useField(model, field, emit, formSlug)
 </script>

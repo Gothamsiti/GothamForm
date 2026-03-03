@@ -1,6 +1,6 @@
 <template lang="pug">
 .input.fieldRadioGroup(
-    v-if="field && field.visible && hide"
+    v-if="field && field.visible && _hide"
     :class="[{ error: field.error, compiled: field.compiled} ,field.class]"
 )
     .inputOption(
@@ -23,7 +23,7 @@
 const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
 const model = defineModel()
 const emit = defineEmits(['addEvalFunction'])
-const { hide } = useField(model, field, emit, formSlug)
+const { hide: _hide } = useField(model, field, emit, formSlug)
 </script>
 
 <style lang="scss">

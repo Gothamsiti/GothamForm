@@ -37,14 +37,14 @@ else if (blok) {
   fields.value = blok.fields
   formId.value = blok.formWrapperId ?? blok._uid
 }
-if(fields.value?.length){
+if (fields.value?.length) {
   for (const field of fields.value) if (field.name) field.value = ref()
 }
 const {
-  submitted:_submitted,
-  submitting:_submitting,
-  error:_error,
-  addEvalFunction:_addEvalFunction
+  submitted: _submitted,
+  submitting: _submitting,
+  error: _error,
+  addEvalFunction: _addEvalFunction,
 } = useForm(fields.value, formId.value)
 const _submittedComputed = computed(() => {
   return _submitted.value === formId.value
