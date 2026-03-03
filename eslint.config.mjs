@@ -20,6 +20,7 @@ export default createConfigForNuxt({
       rules: {
         'no-useless-catch': 'off',
         'vue/require-prop-types': 'off',
+        'vue/multi-word-component-names': 'off',
         // 'no-undef': 'off',
       },
     },
