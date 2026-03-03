@@ -16,6 +16,7 @@ section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submittedCompu
 <script setup>
 import { ref, computed } from 'vue'
 import { useAsyncData } from '#app'
+import { useForm } from '../composables/useForm'
 
 const { blok, storyUuid } = defineProps(['blok', 'storyUuid'])
 const fields = ref(undefined)
