@@ -1,6 +1,6 @@
 {
   "name": "gothamform",
-  "version": "0.0.8",
+  "version": "0.0.7",
   "description": "Gotham.Studio | Nuxt 4 form module",
   "repository": "Gothamsiti/GothamForm",
   "license": "MIT",
@@ -27,10 +27,11 @@
     "dev": "npm run dev:prepare",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "pnpm run lint && pnpm run prepack && changelogen --release && pnpm publish && git push --follow-tags",
+    "release": "changelogen --release && pnpm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch",
+    
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
