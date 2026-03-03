@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { useField } from '../composables/useField'
+import { useField } from '../../composables/useField'
 
 const _inputFile = ref()
 const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])

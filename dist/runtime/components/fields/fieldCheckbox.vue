@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { useField } from "../composables/useField";
+import { useField } from "../../composables/useField";
 const _checkbox = ref();
 const { field, formSlug } = defineProps(["blok", "field", "formSlug"]);
 const model = defineModel("model");

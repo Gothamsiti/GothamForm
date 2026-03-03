@@ -23,7 +23,7 @@
 
 <script setup>
 import * as _formatlocales from 'date-fns/locale'
-import { useField } from '../composables/useField'
+import { useField } from '../../composables/useField'
 
 const _format = ref('dd MMM yy')
 const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
