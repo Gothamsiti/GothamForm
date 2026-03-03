@@ -14,6 +14,8 @@ section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submittedCompu
 </template>
 
 <script setup>
+import { ref, computed } from 'vue';
+
 const { blok, storyUuid } = defineProps(['blok', 'storyUuid'])
 const fields = ref(undefined)
 const formId = ref(undefined)
