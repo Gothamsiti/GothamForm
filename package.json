@@ -1,6 +1,6 @@
 {
   "name": "gothamform",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Gotham.Studio | Nuxt 4 form module",
   "repository": "Gothamsiti/GothamForm",
   "license": "MIT",
@@ -31,7 +31,6 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
