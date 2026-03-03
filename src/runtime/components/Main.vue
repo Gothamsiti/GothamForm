@@ -1,6 +1,5 @@
 <template lang='pug'>
 section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submittedComputed}")
-  | {{ blok}}
   .system.message(v-if="_submittedComputed")
       h4(v-html="$__('FormSubmitOkTitle')")
       p {{ $__('FormSubmitOkText') }}

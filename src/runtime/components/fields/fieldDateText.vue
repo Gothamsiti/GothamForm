@@ -1,6 +1,6 @@
 <template lang="pug">
 .input.fieldDateText(
-  v-if="field && field.visible"
+  v-if="field && field.visible && hide"
   :class="{error:field.error,compiled: field.compiled},field.name"
 )
   label(v-if="field.label && !field.hideLabel" :for="field.name")
@@ -149,7 +149,7 @@ const onBackspace = (fieldName) => {
     }
   }
 }
-useField(model, field, emit, formSlug)
+const { hide } = useField(model, field, emit, formSlug)
 
 // Sincronizza se model cambia esternamente
 watch(model, (newVal) => {

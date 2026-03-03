@@ -1,4 +1,4 @@
-import { defineNuxtModule, createResolver, addImportsDir, addComponentsDir } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, addImportsDir, addComponentsDir, addPlugin } from '@nuxt/kit'
 import type { Resolver } from '@nuxt/kit'
 
 export interface ModuleOptions {
@@ -31,5 +31,6 @@ export default defineNuxtModule<ModuleOptions>({
     // addServerRoutes(resolver)
     addComposables(resolver)
     addComponents(resolver)
+    addPlugin(resolver.resolve("./runtime/plugins/vueDatePicker.client.js"))
   },
 })
