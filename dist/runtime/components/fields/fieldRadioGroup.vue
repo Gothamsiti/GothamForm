@@ -20,13 +20,9 @@
 </template>
 
 <script setup>
+import { useField } from "../composables/useField";
 const { field, formSlug } = defineProps(["blok", "field", "formSlug"]);
 const model = defineModel();
 const emit = defineEmits(["addEvalFunction"]);
 const { hide: _hide } = useField(model, field, emit, formSlug);
 </script>
-
-<style lang="scss">
-.fieldRadioGroup {
-}
-</style>

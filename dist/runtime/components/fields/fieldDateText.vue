@@ -43,6 +43,7 @@
 
 <script setup>
 import { ref, watch, nextTick } from "vue";
+import { useField } from "../composables/useField";
 const { field, formSlug } = defineProps(["blok", "field", "formSlug"]);
 const model = defineModel("model");
 const emit = defineEmits(["addEvalFunction"]);
