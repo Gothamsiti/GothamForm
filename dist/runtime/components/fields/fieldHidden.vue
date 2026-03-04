@@ -1,5 +1,5 @@
 <template lang="pug">
-.fieldHidden(
+.fieldHidden.hidden(
     v-if="field && field.visible"
     :class="{error:field.error,compiled: field.compiled},field.name"
 )
