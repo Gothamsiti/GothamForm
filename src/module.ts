@@ -1,11 +1,20 @@
-import { defineNuxtModule, createResolver, addImportsDir, addComponentsDir, addPlugin } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, addImports, addComponentsDir, addPlugin } from '@nuxt/kit'
 import type { Resolver } from '@nuxt/kit'
 
 export interface ModuleOptions {
   submitEndpoint: string
 }
 const addComposables = (resolver: Resolver) => {
-  addImportsDir(resolver.resolve('runtime/composables'))
+  addImports([
+    {
+      name: 'useForm',
+      from: resolver.resolve('runtime/composables/useForm'),
+    },
+    {
+      name: 'useField',
+      from: resolver.resolve('runtime/composables/useField'),
+    },
+  ])
 }
 const addComponents = (resolver: Resolver) => {
   addComponentsDir({
