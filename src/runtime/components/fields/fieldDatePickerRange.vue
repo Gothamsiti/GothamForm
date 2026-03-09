@@ -9,15 +9,15 @@
         VueDatePicker(
             :id="field.name"
             :name="field.name"
-            v-model="model"
-            range
-            multi-calendars
+            :range="field.range || false"
+            :multi-calendars="field.multiCalendars || false"
             :placeholder="field.placeholder ? field.placeholder + (field.required ? '*' : '' ) : ''"
-            :enable-time-picker="false"
-            auto-apply
+            :time-config="{ enableTimePicker: field.enableTimePicker || false }"
             :dark="field.dark || false"
             :format="_format"
             :format-locale="_formatlocales[_currentLanguage]"
+            auto-apply
+            v-model="model"
         )
 </template>
 
