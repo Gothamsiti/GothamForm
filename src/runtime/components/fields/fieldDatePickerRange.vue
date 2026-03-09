@@ -16,6 +16,7 @@
             :dark="field.dark || false"
             :format="_format"
             :format-locale="_formatlocales[_currentLanguage]"
+            :min-date="field.minDateNow ? new Date() : null"
             auto-apply
             v-model="model"
         )
