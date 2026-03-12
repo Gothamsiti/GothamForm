@@ -5,6 +5,7 @@
 )
     label(v-if="field.label && !field.hideLabel" :for="field.name")
         span(v-html="field.label+(field.required?'*':'')")
+    Icon(v-if="field.icon" :name="field.icon")
     textarea(
         :id="field.name"
         :name="field.name"
