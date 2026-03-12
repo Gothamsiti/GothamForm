@@ -4,6 +4,7 @@ import { useState } from '#app'
 
 export const useField = (model, field, emit, formSlug) => {
   const gobalFieldsStore = useState('gobalFieldsStore', () => ({}))
+  const globalEvalFieldsStore = useState('globalEvalFieldsStore', () => ({}))
   if (model && field && emit) {
     if (formSlug) {
       if (!gobalFieldsStore.value[formSlug]) gobalFieldsStore.value[formSlug] = {}
@@ -31,6 +32,11 @@ export const useField = (model, field, emit, formSlug) => {
       gobalFieldsStore.value[formSlug][field.name] = field.value
     }
     if (emit) emit('addEvalFunction', evalField)
+
+    if (import.meta.client && formSlug) {
+      if (!globalEvalFieldsStore.value[formSlug]) globalEvalFieldsStore.value[formSlug] = {}
+      globalEvalFieldsStore.value[formSlug][field.name] = evalField
+    }
     watch(model, useDebounceFn(evalField, 300))
   }
   const hide = computed(() => {
@@ -53,5 +59,5 @@ export const useField = (model, field, emit, formSlug) => {
       return true
     }
   })
-  return { gobalFieldsStore, hide }
+  return { gobalFieldsStore, hide, globalEvalFieldsStore }
 }
