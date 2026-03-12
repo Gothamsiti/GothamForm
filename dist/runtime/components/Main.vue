@@ -30,6 +30,7 @@ if (storyUuid || blok.form) {
     };
     return $fetch("/api/storyblok/request", { query: params });
   });
+  console.log("form story", story?.value?.content?.component);
   if (story?.value?.content?.component !== "FormMain") throw createError({ statusCode: 500, statusMessage: "story is not a form", fatal: false });
   fields.value = story?.value?.content.fields;
   formId.value = story?.value?.uuid;
