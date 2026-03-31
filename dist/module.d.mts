@@ -1,2 +1,7 @@
-export * from "/Users/robertosilvestri/Sites/starkIndustries/GothamForm/src/module.js";
-export { default } from "/Users/robertosilvestri/Sites/starkIndustries/GothamForm/src/module.js";
+interface ModuleOptions {
+    submitEndpoint: string;
+}
+declare const _default: any;
+
+export { _default as default };
+export type { ModuleOptions };

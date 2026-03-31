@@ -1,18 +1,40 @@
-import { createJiti } from "file:///Users/robertosilvestri/Sites/starkIndustries/GothamForm/node_modules/.pnpm/jiti@2.6.1/node_modules/jiti/lib/jiti.mjs";
+import { defineNuxtModule, createResolver, addPlugin, addImports, addComponentsDir } from '@nuxt/kit';
 
-const jiti = createJiti(import.meta.url, {
-  "interopDefault": true,
-  "alias": {
-    "gothamform": "/Users/robertosilvestri/Sites/starkIndustries/GothamForm"
-  },
-  "transformOptions": {
-    "babel": {
-      "plugins": []
+const addComposables = (resolver) => {
+  addImports([
+    {
+      name: "useForm",
+      from: resolver.resolve("runtime/composables/useForm")
+    },
+    {
+      name: "useField",
+      from: resolver.resolve("runtime/composables/useField")
     }
+  ]);
+};
+const addComponents = (resolver) => {
+  addComponentsDir({
+    path: resolver.resolve("runtime/components"),
+    prefix: "Form",
+    pathPrefix: false,
+    global: true
+  });
+};
+const module$1 = defineNuxtModule({
+  meta: {
+    name: "gothamform",
+    configKey: "gothamform"
+  },
+  defaults: {
+    submitEndpoint: "/api/form/submit"
+  },
+  setup(_options, _nuxt) {
+    _nuxt.options.runtimeConfig.gothamform = { ..._options };
+    const resolver = createResolver(import.meta.url);
+    addComposables(resolver);
+    addComponents(resolver);
+    addPlugin(resolver.resolve("./runtime/plugins/vueDatePicker.client.js"));
   }
-})
+});
 
-/** @type {import("/Users/robertosilvestri/Sites/starkIndustries/GothamForm/src/module.js")} */
-const _module = await jiti.import("/Users/robertosilvestri/Sites/starkIndustries/GothamForm/src/module.ts");
-
-export default _module?.default ?? _module;
+export { module$1 as default };

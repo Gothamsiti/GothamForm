@@ -23,33 +23,28 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent, ref } from 'vue'
-import { useField } from '../../composables/useField'
-import { useLanguage } from '#imports'
-
-const DatePickerComponent = defineAsyncComponent(() =>
-  import('@vuepic/vue-datepicker').then(m => m.VueDatePicker ?? m.default),
-)
-console.log('DatePickerComponent', DatePickerComponent)
-
-const _format = ref('dd MMM yy')
-const { field, formSlug } = defineProps(['blok', 'field', 'formSlug'])
-const model = defineModel('model')
-const emit = defineEmits(['addEvalFunction'])
-const { currentLanguage: _currentLanguage } = useLanguage()
-
-const formatLocale = ref(null)
+import { defineAsyncComponent, ref } from "vue";
+import { useField } from "../../composables/useField";
+import { useLanguage } from "#imports";
+const DatePickerComponent = defineAsyncComponent(
+  () => import("@vuepic/vue-datepicker").then((m) => m.VueDatePicker ?? m.default)
+);
+console.log("DatePickerComponent", DatePickerComponent);
+const _format = ref("dd MMM yy");
+const { field, formSlug } = defineProps(["blok", "field", "formSlug"]);
+const model = defineModel("model");
+const emit = defineEmits(["addEvalFunction"]);
+const { currentLanguage: _currentLanguage } = useLanguage();
+const formatLocale = ref(null);
 onMounted(async () => {
-  const localeKey = _currentLanguage.value
-  if (localeKey === 'it' || localeKey === 'it-IT') {
-    const { it } = await import('date-fns/locale/it')
-    formatLocale.value = it
+  const localeKey = _currentLanguage.value;
+  if (localeKey === "it" || localeKey === "it-IT") {
+    const { it } = await import("date-fns/locale/it");
+    formatLocale.value = it;
+  } else {
+    const { enUS } = await import("date-fns/locale/en-US");
+    formatLocale.value = enUS;
   }
-  else {
-    const { enUS } = await import('date-fns/locale/en-US')
-    formatLocale.value = enUS
-  }
-})
-
-const { hide: _hide } = useField(model, field, emit, formSlug)
+});
+const { hide: _hide } = useField(model, field, emit, formSlug);
 </script>
