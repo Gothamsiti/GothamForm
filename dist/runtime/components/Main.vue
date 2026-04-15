@@ -4,7 +4,7 @@ section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submittedCompu
       h4(v-html="$__('FormSubmitOkTitle')")
       p {{ $__('FormSubmitOkText') }}
   template(v-else)
-      form(@submit="formSubmit")
+      form(@submit="handleSubmit")
           template(v-if="!_submittedComputed" v-for="field of fields" :key="field._uid")
               StoryblokComponent( v-if="field.name" v-model:model="field.value" :blok="{component:field.component,originalblok:field}" :field="field" :formSlug="blok.scope || formSlug" @addEvalFunction="_addEvalFunction" v-editable="field")
               StoryblokComponent( v-else :blok="{component:field.component,originalblok:field}" :field="field" v-editable="field" :formSlug="blok.scope || formSlug")
@@ -18,6 +18,7 @@ import { ref, computed } from "vue";
 import { useAsyncData } from "#app";
 import { useForm } from "../composables/useForm";
 const { blok, storyUuid } = defineProps(["blok", "storyUuid"]);
+const emit = defineEmits(["submit"]);
 const fields = ref(void 0);
 const formId = ref(void 0);
 const formSlug = ref(void 0);
@@ -45,9 +46,15 @@ const {
   submitted: _submitted,
   submitting: _submitting,
   error: _error,
-  addEvalFunction: _addEvalFunction
+  addEvalFunction: _addEvalFunction,
+  formSubmit
 } = useForm(fields.value, formId.value);
 const _submittedComputed = computed(() => {
   return _submitted.value === formId.value;
 });
+const handleSubmit = async (e) => {
+  const response = await formSubmit(e);
+  if (!response) return;
+  emit("submit", response);
+};
 </script>

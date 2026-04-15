@@ -8,7 +8,11 @@ export declare const useForm: (fields: any, uid: any) => {
 } | {
     submitting: any;
     submitted: any;
-    formSubmit: (event: any) => Promise<false | undefined>;
+    formSubmit: (event: any) => Promise<false | {
+        formData: FormData;
+        payload: {};
+        clearFields: () => void;
+    }>;
     addEvalFunction: (f: any) => any;
     error: any;
     formUid: any;

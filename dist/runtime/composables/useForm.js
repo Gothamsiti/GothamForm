@@ -60,7 +60,8 @@ export const useForm = (fields, uid) => {
       return false;
     } else {
       event.preventDefault();
-      const { formData } = getPayload(fields);
+      const { formData, payload } = getPayload(fields);
+      return { formData, payload, clearFields };
       try {
         submitting.value = true;
         await $fetch("/api/form/submit", {
