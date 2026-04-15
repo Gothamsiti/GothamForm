@@ -69,7 +69,9 @@ export const useForm = (fields, uid) => {
     else {
       event.preventDefault()
 
-      const { formData } = getPayload(fields)
+      const { formData, payload } = getPayload(fields)
+
+      return { formData, payload, clearFields }
 
       try {
         submitting.value = true
