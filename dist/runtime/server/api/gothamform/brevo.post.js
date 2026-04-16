@@ -1,4 +1,4 @@
-import { createError } from '#imports'
+import { defineEventHandler, readMultipartFormData, createError } from '#imports'
 import { sendEmail } from '../../utils/brevo.js';
 import { parseFields, parseMultipartFormFields, getTemplate, textReplacer } from '../../utils/emailtemplate.js';
 
@@ -18,7 +18,6 @@ export default defineEventHandler(async(event) => {
     try {
         const mailSent = await sendEmail(subject, html, fields.email, files);
         return { sent: mailSent }
-        return { sent: true }
     } catch (error) {
         throw error;
     }
