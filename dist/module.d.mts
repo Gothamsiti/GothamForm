@@ -1,5 +1,10 @@
+interface BrevoOptions {
+    key: string;
+}
 interface ModuleOptions {
-    submitEndpoint: string;
+    from: string;
+    to: string;
+    brevo?: BrevoOptions | undefined;
 }
 declare const _default: any;
 
