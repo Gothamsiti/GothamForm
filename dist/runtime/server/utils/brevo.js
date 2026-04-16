@@ -1,3 +1,5 @@
+import { useRuntimeConfig } from '#imports'
+
 export const sendEmail = async (subject,html,replyTo,files)=>{
     const config = useRuntimeConfig()
     const { from, to } = config.gothamform;
