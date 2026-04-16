@@ -4,7 +4,6 @@ export const sendEmail = async (subject,html,replyTo,files)=>{
     const config = useRuntimeConfig()
     const { from, to } = config.gothamform;
     const { key } = config.gothamform.brevo
-    console.log(key)
     try{    
         let payload = { 
             sender:{ email: from },
