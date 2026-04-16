@@ -25,9 +25,6 @@ const module$1 = defineNuxtModule({
     name: "gothamform",
     configKey: "gothamform"
   },
-  defaults: {
-    submitEndpoint: "/api/form/submit"
-  },
   setup(_options, _nuxt) {
     _nuxt.options.runtimeConfig.gothamform = { ..._options };
     const resolver = createResolver(import.meta.url);

@@ -1,11 +1,8 @@
 import { ref } from '#imports'
 
 export const useForm = (fields, uid) => {
-  if (!fields?.length) return { submitted: false, submitting: false, error: false }
+  if (!fields?.length) return undefined;
   const evalFunctions = ref([])
-  const submitting = ref(false)
-  const submitted = ref(undefined)
-  const error = ref(false)
   const formUid = ref(uid)
 
   const flatFields = () => {
@@ -60,7 +57,6 @@ export const useForm = (fields, uid) => {
     return true
   }
   const formSubmit = async (event) => {
-    error.value = false
     for (const func of evalFunctions.value) func()
     if (!evalFields(fields)) {
       event.preventDefault()
@@ -72,21 +68,6 @@ export const useForm = (fields, uid) => {
       const { formData, payload } = getPayload(fields)
 
       return { formData, payload, clearFields }
-
-      try {
-        submitting.value = true
-        await $fetch('/api/form/submit', {
-          method: 'POST',
-          body: formData,
-        })
-        clearFields()
-        submitted.value = formUid.value
-      }
-      catch (fetchError) {
-        console.log('formSubmit fetchError', fetchError)
-        error.value = fetchError
-      }
-      submitting.value = false
     }
   }
 
@@ -100,5 +81,5 @@ export const useForm = (fields, uid) => {
     // il nextTick non è sufficiente, ricorro ad un timeout in questo caso.
     setTimeout(() => window.clearingFields = false, 50)
   }
-  return { submitting, submitted, formSubmit, addEvalFunction, error, formUid }
+  return { formSubmit, addEvalFunction, formUid }
 }
