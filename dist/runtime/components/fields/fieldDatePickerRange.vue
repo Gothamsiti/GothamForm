@@ -6,7 +6,7 @@
     label(v-if="field.label && !field.hideLabel" :for="field.name")
         span(v-html="field.label+(field.required?'*':'')")
     ClientOnly
-        component(:is="DatePickerComponent"
+        component(:is="_DatePickerComponent"
             :id="field.name"
             :name="field.name"
             :range="field.range || false"
@@ -23,13 +23,12 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent, ref } from "vue";
+import { defineAsyncComponent, ref, onMounted } from "vue";
 import { useField } from "../../composables/useField";
 import { useLanguage } from "#imports";
-const DatePickerComponent = defineAsyncComponent(
+const _DatePickerComponent = defineAsyncComponent(
   () => import("@vuepic/vue-datepicker").then((m) => m.VueDatePicker ?? m.default)
 );
-console.log("DatePickerComponent", DatePickerComponent);
 const _format = ref("dd MMM yy");
 const { field, formSlug } = defineProps(["blok", "field", "formSlug"]);
 const model = defineModel("model");

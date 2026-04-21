@@ -1,7 +1,7 @@
 import { ref } from '#imports'
 
 export const useForm = (fields, uid) => {
-  if (!fields?.length) return undefined;
+  if (!fields?.length) return undefined
   const evalFunctions = ref([])
   const formUid = ref(uid)
 

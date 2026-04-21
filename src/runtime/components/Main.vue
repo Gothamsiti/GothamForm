@@ -1,29 +1,29 @@
 <template lang='pug'>
-section.Form(ref="$el" :class="{submitting,submitted}")
-  .system.message(v-if="submitted")
+section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submitted}")
+  .system.message(v-if="_submitted")
       h4(v-html="$__('FormSubmitOkTitle')")
       p {{ $__('FormSubmitOkText') }}
   template(v-else)
-      form(@submit="handleSubmit")
-          template(v-if="!submitted" v-for="field of fields" :key="field._uid")
+      form(@submit="_handleSubmit")
+          template(v-if="!_submitted" v-for="field of fields" :key="field._uid")
               StoryblokComponent( v-if="field.name" v-model:model="field.value" :blok="{component:field.component,originalblok:field}" :field="field" :formSlug="blok.scope || formSlug" @addEvalFunction="_addEvalFunction" v-editable="field")
               StoryblokComponent( v-else :blok="{component:field.component,originalblok:field}" :field="field" v-editable="field" :formSlug="blok.scope || formSlug")
-          .error.system.message(v-if="error")
+          .error.system.message(v-if="_error")
               h4(v-html="$__('FormSubmitKoTitle')")
               p {{ $__('FormSubmitKoText') }}
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { useAsyncData } from '#app'
 import { useForm } from '../composables/useForm'
 
-const { blok, submitting, submitted, error, storyUuid } = defineProps(['blok','submitting','submitted','error','storyUuid'])
+const { blok, submitting: _submitting, submitted: _submitted, error: _error, storyUuid } = defineProps(['blok', 'submitting', 'submitted', 'error', 'storyUuid'])
 const emit = defineEmits(['submit'])
 const fields = ref(undefined)
 const formId = ref(undefined)
 const formSlug = ref(undefined)
-let emailTemplate = undefined;
+let emailTemplate = undefined
 
 if (storyUuid || blok.form) {
   const uuid = storyUuid || blok.form
@@ -52,10 +52,9 @@ const {
   formSubmit,
 } = useForm(fields.value, formId.value)
 
-
-const handleSubmit = async (e) => {
-  const response = await formSubmit(e);
-  if (!response) return;
-  emit('submit', { fields: response, emailTemplate });
+const _handleSubmit = async (e) => {
+  const response = await formSubmit(e)
+  if (!response) return
+  emit('submit', { fields: response, emailTemplate })
 }
 </script>

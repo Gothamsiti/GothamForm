@@ -5,11 +5,11 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 interface BrevoOptions {
-  key: string,
+  key: string
 }
 export interface ModuleOptions {
-  from: string,
-  to: string,
+  from: string
+  to: string
   brevo?: BrevoOptions | undefined
 }
 const addComposables = (resolver: Resolver) => {
