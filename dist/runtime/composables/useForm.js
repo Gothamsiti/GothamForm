@@ -1,10 +1,7 @@
 import { ref } from "#imports";
 export const useForm = (fields, uid) => {
-  if (!fields?.length) return { submitted: false, submitting: false, error: false };
+  if (!fields?.length) return void 0;
   const evalFunctions = ref([]);
-  const submitting = ref(false);
-  const submitted = ref(void 0);
-  const error = ref(false);
   const formUid = ref(uid);
   const flatFields = () => {
     const arr = [];
@@ -53,27 +50,14 @@ export const useForm = (fields, uid) => {
     return true;
   };
   const formSubmit = async (event) => {
-    error.value = false;
     for (const func of evalFunctions.value) func();
     if (!evalFields(fields)) {
       event.preventDefault();
       return false;
     } else {
       event.preventDefault();
-      const { formData } = getPayload(fields);
-      try {
-        submitting.value = true;
-        await $fetch("/api/form/submit", {
-          method: "POST",
-          body: formData
-        });
-        clearFields();
-        submitted.value = formUid.value;
-      } catch (fetchError) {
-        console.log("formSubmit fetchError", fetchError);
-        error.value = fetchError;
-      }
-      submitting.value = false;
+      const { formData, payload } = getPayload(fields);
+      return { formData, payload, clearFields };
     }
   };
   const clearFields = () => {
@@ -84,5 +68,5 @@ export const useForm = (fields, uid) => {
     }
     setTimeout(() => window.clearingFields = false, 50);
   };
-  return { submitting, submitted, formSubmit, addEvalFunction, error, formUid };
+  return { formSubmit, addEvalFunction, formUid };
 };
