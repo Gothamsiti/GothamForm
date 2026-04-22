@@ -13,6 +13,7 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { useField } from "../../composables/useField";
 const _inputFile = ref();
 const { field, formSlug } = defineProps(["blok", "field", "formSlug"]);
