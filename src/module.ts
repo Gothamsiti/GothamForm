@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 interface BrevoOptions {
-  key: string
+  key: string | undefined
 }
 export interface ModuleOptions {
   from: string

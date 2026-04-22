@@ -1,5 +1,5 @@
 interface BrevoOptions {
-    key: string;
+    key: string | undefined;
 }
 interface ModuleOptions {
     from: string;
