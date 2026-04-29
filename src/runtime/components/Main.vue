@@ -17,6 +17,7 @@ section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submitted}")
 import { ref } from 'vue'
 import { useAsyncData } from '#app'
 import { useForm } from '../composables/useForm'
+import { useLanguage } from '#imports'
 
 const { blok, submitting: _submitting, submitted: _submitted, error: _error, storyUuid } = defineProps(['blok', 'submitting', 'submitted', 'error', 'storyUuid'])
 const emit = defineEmits(['submit'])
