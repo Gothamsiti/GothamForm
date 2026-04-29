@@ -23,9 +23,8 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent, ref, onMounted } from "vue";
+import { defineAsyncComponent, ref, onMounted, useLanguage } from "#imports";
 import { useField } from "../../composables/useField";
-import { useLanguage } from "#imports";
 const _DatePickerComponent = defineAsyncComponent(
   () => import("@vuepic/vue-datepicker").then((m) => m.VueDatePicker ?? m.default)
 );

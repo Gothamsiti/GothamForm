@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { watch } from 'vue'
+import { watch } from '#imports'
 import { useField } from '../../composables/useField'
 
 const { field, formSlug } = defineProps(['blok', 'field', 'customSource', 'formSlug'])
