@@ -18,7 +18,7 @@
         template(v-if="field.options")
             | {{ field.options }}
             option(v-for="option in field.options" :value="option.value") {{ option.name || option.label }}
-    Icon(name="gotham:arrow-full-up")
+    Icon(name="gotham:arrowfullup")
 </template>
 
 <script setup>
