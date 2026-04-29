@@ -24,13 +24,16 @@ const fields = ref(undefined)
 const formId = ref(undefined)
 const formSlug = ref(undefined)
 let emailTemplate = undefined
+const { currentLanguage, defaultLanguage } = useLanguage()
 
 if (storyUuid || blok.form) {
   const uuid = storyUuid || blok.form
-  const { data: story } = await useAsyncData(`form_${uuid}`, async () => {
+  const language = currentLanguage.value && currentLanguage.value !== defaultLanguage.value ? currentLanguage.value : undefined
+  const { data: story } = await useAsyncData(`form_${uuid}_${language || defaultLanguage.value || 'default'}`, async () => {
     const params = {
       fullSlug: uuid,
       find_by: 'uuid',
+      language,
     }
     return $fetch('/api/storyblok/request', { query: params })
   })
