@@ -6,9 +6,9 @@
     label(v-if="field.label" :for="field.name")
         span(v-html="field.label+(field.required?'*':'')")
     .inputContent
-        label.text( @click="() => { _checkbox?.click() } "  :for="field.name")
+        label.text( @click="_handleLabelClick"  :for="field.name")
             StoryblokRichText(:doc="field.text")
-        .fakeCheck(@click="() => { _checkbox?.click() } ")
+        .fakeCheck(@click="_handleLabelClick")
         input(
             :id="field.name"
             :name="field.name"
@@ -26,4 +26,8 @@ const { field, formSlug } = defineProps(["blok", "field", "formSlug"]);
 const model = defineModel("model");
 const emit = defineEmits(["addEvalFunction"]);
 const { hide: _hide } = useField(model, field, emit, formSlug);
+const _handleLabelClick = (e) => {
+  if (e.target.closest("a")) return;
+  _checkbox.value?.click();
+};
 </script>
