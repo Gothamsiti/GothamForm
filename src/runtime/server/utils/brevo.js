@@ -12,7 +12,7 @@ export const sendEmail = async (subject, html, replyTo, files) => {
       subject,
       htmlContent: html,
     }
-    if (files && files.length) {
+    if (files && Object.keys(files).length) {
       payload.attachment = []
       for (const f of Object.keys(files)) {
         const file = files[f]
