@@ -1,7 +1,7 @@
 {
   "name": "gothamform",
   "configKey": "gothamform",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "builder": {
     "@nuxt/module-builder": "1.0.2",
     "unbuild": "unknown"
