@@ -7,7 +7,7 @@ section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submitted}")
       form(@submit="_handleSubmit")
           template(v-if="!_submitted" v-for="field of fields" :key="field._uid")
               StoryblokComponent( v-if="field.name" v-model:model="field.value" :blok="{component:field.component,originalblok:field}" :field="field" :formSlug="blok.scope || formSlug" @addEvalFunction="_addEvalFunction" v-editable="field")
-              StoryblokComponent( v-else :blok="{component:field.component,originalblok:field}" :field="field" v-editable="field" :formSlug="blok.scope || formSlug")
+              StoryblokComponent( v-else :blok="{component:field.component,originalblok:field}" :field="field" v-editable="field" :formSlug="blok.scope || formSlug" @addEvalFunction="_addEvalFunction")
           .error.system.message(v-if="_error")
               h4(v-html="$__('FormSubmitKoTitle')")
               p {{ $__('FormSubmitKoText') }}
@@ -45,7 +45,14 @@ if (storyUuid || blok.form) {
   formId.value = blok.formWrapperId ?? blok._uid;
 }
 if (fields.value?.length) {
-  for (const field of fields.value) if (field.name) field.value = ref();
+  for (const field of fields.value) {
+    if (field.name) field.value = ref();
+    if (field.component === "fieldFlexGroup" && field.fields?.length) {
+      for (const nestedField of field.fields) {
+        if (nestedField.name) nestedField.value = ref();
+      }
+    }
+  }
 }
 const {
   addEvalFunction: _addEvalFunction,
