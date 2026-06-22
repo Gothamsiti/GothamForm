@@ -12,8 +12,9 @@ export const useForm = (fields, uid) => {
         for (const nestedField of field.fields) {
           arr.push(nestedField)
         }
+      }else{
+        arr.push(field)
       }
-      arr.push(field)
     }
     fields = arr
   }
