@@ -17,7 +17,6 @@ export const useForm = (fields, uid) => {
     fields = arr;
   };
   flatFields();
-  console.log(fields);
   const addEvalFunction = (f) => evalFunctions.value.push(f);
   const getPayload = (fields2) => {
     const payload = {};
