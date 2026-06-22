@@ -1,6 +1,6 @@
 <template lang="pug">
 .fieldFreeTextEditor
-    StoryblokRichText(:doc="blok.originalblok.text")
+    StoryblokRichText(:document="blok.originalblok.text")
 </template>
 
 <script setup>
