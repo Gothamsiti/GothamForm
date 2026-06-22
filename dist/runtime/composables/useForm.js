@@ -6,7 +6,7 @@ export const useForm = (fields, uid) => {
   const flatFields = () => {
     const arr = [];
     for (const field of fields) {
-      if (field.component == "fieldFlexGroup") {
+      if (field.component == "FormFieldFlexGroup") {
         for (const nestedField of field.fields) {
           arr.push(nestedField);
         }
@@ -17,6 +17,7 @@ export const useForm = (fields, uid) => {
     fields = arr;
   };
   flatFields();
+  console.log(fields);
   const addEvalFunction = (f) => evalFunctions.value.push(f);
   const getPayload = (fields2) => {
     const payload = {};
