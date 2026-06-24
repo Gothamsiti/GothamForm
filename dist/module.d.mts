@@ -1,3 +1,5 @@
+import * as _nuxt_schema from '@nuxt/schema';
+
 interface BrevoOptions {
     key: string | undefined;
 }
@@ -6,7 +8,7 @@ interface ModuleOptions {
     to: string;
     brevo?: BrevoOptions | undefined;
 }
-declare const _default: any;
+declare const _default: _nuxt_schema.NuxtModule<ModuleOptions, ModuleOptions, false>;
 
 export { _default as default };
 export type { ModuleOptions };
