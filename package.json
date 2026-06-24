@@ -39,8 +39,7 @@
     "@storyblok/vue": "^11.0.0",
     "@vuepic/vue-datepicker": "^14.0.0",
     "date-fns": "^4.4.0",
-    "lodash.debounce": "^4.0.8",
-    "vue-date-picker": "^2.5.0"
+    "lodash.debounce": "^4.0.8"
   },
   "devDependencies": {
     "@nuxt/devtools": "4.0.0-alpha.7",

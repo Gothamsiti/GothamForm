@@ -23,9 +23,6 @@ importers:
       lodash.debounce:
         specifier: ^4.0.8
         version: 4.0.8
-      vue-date-picker:
-        specifier: ^2.5.0
-        version: 2.5.0
     devDependencies:
       '@nuxt/devtools':
         specifier: 4.0.0-alpha.7
@@ -2425,9 +2422,6 @@ packages:
   '@vue/compiler-dom@3.5.38':
     resolution: {integrity: sha512-JTqp25l8aFfJYF7/KmsXZjAxJz7T+SjmTJLoXVjHtc2BrSgSiW2n9Aem/cWq1OPe68A8JL06B3eVdhlP0H4TVw==}
 
-  '@vue/compiler-sfc@2.7.16':
-    resolution: {integrity: sha512-KWhJ9k5nXuNtygPU7+t1rX6baZeqOYLEforUPjgNDBnLicfHCoi48H87Q8XyLZOrNNsmhuwKqtpDQWjEFe6Ekg==}
-
   '@vue/compiler-sfc@3.5.38':
     resolution: {integrity: sha512-DuA2GiZawSEW442iw/9+Fkol8hTgb4Ke5KkhmSry65QA7YuyMbIdy8p0XZRMvNwJdgRz307W8g1CSzdvS4nuNg==}
 
@@ -4460,11 +4454,6 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@2.8.8:
-    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-
   pretty-bytes@7.1.0:
     resolution: {integrity: sha512-nODzvTiYVRGRqAOvE84Vk5JDPyyxsVk0/fbA/bq7RqlnhksGpset09XTxbpvLTIjoaF7K8Z8DG8yHtKGTPSYRw==}
     engines: {node: '>=20'}
@@ -5296,9 +5285,6 @@ packages:
   vue-bundle-renderer@2.3.1:
     resolution: {integrity: sha512-7F4LNMopUw5RgYWo4zCmVUHCc6aQRC6dCKHUYkM/n+fux4AUGdL1x6m5A515WWyFysRRN7cx3hBzVqoisfRfzw==}
 
-  vue-date-picker@2.5.0:
-    resolution: {integrity: sha512-pVGLlORSrnHlCqLPf6e1NKUQbvv2FaMUXS3o/C6UfYZD9B+7H1nUMEBFBDwmwDE9GAJsav8J9r4ODvkPegbP3Q==}
-
   vue-demi@0.14.10:
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
     engines: {node: '>=12'}
@@ -5355,10 +5341,6 @@ packages:
     resolution: {integrity: sha512-3qh3c9VUVysuXynaa4fVZ3ncx3VgD7EPRiQcj+jUVZl5u/TTkD3c27XvSEu3JGJfsJt/vVTVziZ3djiiHtW4cQ==}
     peerDependencies:
       vue: ^3.3.0
-
-  vue@2.7.16:
-    resolution: {integrity: sha512-4gCtFXaAA3zYZdTp5s4Hl2sozuySsgz4jy1EnpBHNfpMa9dK1ZCG7viqBPCwXtmgc8nHqUsAu3G4gtmXkkY3Sw==}
-    deprecated: Vue 2 has reached EOL and is no longer actively maintained. See https://v2.vuejs.org/eol/ for more details.
 
   vue@3.5.38:
     resolution: {integrity: sha512-vAMKHfImQlYSy0C+PBue4s3ERZ2xGKfgZg5GXAsLInq1dyh2H78ILVP5sK0KPFPVW4kv+OGCIvBEondcjpZp7A==}
@@ -7821,14 +7803,6 @@ snapshots:
       '@vue/compiler-core': 3.5.38
       '@vue/shared': 3.5.38
 
-  '@vue/compiler-sfc@2.7.16':
-    dependencies:
-      '@babel/parser': 7.29.7
-      postcss: 8.5.15
-      source-map: 0.6.1
-    optionalDependencies:
-      prettier: 2.8.8
-
   '@vue/compiler-sfc@3.5.38':
     dependencies:
       '@babel/parser': 7.29.7
@@ -10198,9 +10172,6 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@2.8.8:
-    optional: true
-
   pretty-bytes@7.1.0: {}
 
   process-nextick-args@2.0.1: {}
@@ -11098,10 +11069,6 @@ snapshots:
     dependencies:
       ufo: 1.6.4
 
-  vue-date-picker@2.5.0:
-    dependencies:
-      vue: 2.7.16
-
   vue-demi@0.14.10(vue@3.5.38(typescript@6.0.3)):
     dependencies:
       vue: 3.5.38(typescript@6.0.3)
@@ -11160,11 +11127,6 @@ snapshots:
   vue-virtual-scroller@3.0.4(vue@3.5.38(typescript@6.0.3)):
     dependencies:
       vue: 3.5.38(typescript@6.0.3)
-
-  vue@2.7.16:
-    dependencies:
-      '@vue/compiler-sfc': 2.7.16
-      csstype: 3.2.3
 
   vue@3.5.38(typescript@6.0.3):
     dependencies:
