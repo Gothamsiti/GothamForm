@@ -9,7 +9,8 @@
     ".": {
       "types": "./dist/types.d.mts",
       "import": "./dist/module.mjs"
-    }
+    },
+    "./server/utils/emailtemplate": "./dist/runtime/server/utils/emailtemplate.js"
   },
   "main": "./dist/module.mjs",
   "typesVersions": {
