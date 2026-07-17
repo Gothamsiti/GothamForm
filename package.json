@@ -1,6 +1,6 @@
 {
   "name": "gothamform",
-  "version": "0.0.52",
+  "version": "0.0.53",
   "description": "Gotham.Studio | Nuxt 4 form module",
   "repository": "Gothamsiti/GothamForm",
   "license": "MIT",
@@ -9,7 +9,8 @@
     ".": {
       "types": "./dist/types.d.mts",
       "import": "./dist/module.mjs"
-    }
+    },
+    "./server/utils/emailtemplate": "./dist/runtime/server/utils/emailtemplate.js"
   },
   "main": "./dist/module.mjs",
   "typesVersions": {
