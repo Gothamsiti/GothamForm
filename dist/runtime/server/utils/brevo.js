@@ -8,7 +8,7 @@ export const sendEmail = async (subject, html, replyTo, files) => {
     let payload = {
       sender: { email: from },
       to: [{ email: to }],
-      replyTo: { email: replyTo },
+      replyTo: { email: replyTo ?? from },
       subject,
       htmlContent: html,
     }
