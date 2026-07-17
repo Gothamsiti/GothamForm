@@ -8,9 +8,11 @@ export const sendEmail = async (subject, html, replyTo, files) => {
     let payload = {
       sender: { email: from },
       to: [{ email: to }],
-      replyTo: { email: replyTo },
       subject,
       htmlContent: html,
+    }
+    if(replyTo){
+      payload.replyTo = { email: replyTo }
     }
     if (files && Object.keys(files).length) {
       payload.attachment = []
