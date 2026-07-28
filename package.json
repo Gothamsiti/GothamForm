@@ -36,8 +36,8 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@nuxt/kit": "^4.4.8",
-    "@storyblok/vue": "^11.0.0",
+    "@nuxt/kit": "^4.5.1",
+    "@storyblok/vue": "^11.2.2",
     "@vuepic/vue-datepicker": "^14.0.0",
     "date-fns": "^4.4.0",
     "lodash.debounce": "^4.0.8"
@@ -45,15 +45,15 @@
   "devDependencies": {
     "@nuxt/devtools": "4.0.0-alpha.7",
     "@nuxt/eslint-config": "^1.16.0",
-    "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.4.8",
+    "@nuxt/module-builder": "^1.0.3",
+    "@nuxt/schema": "^4.5.1",
     "@nuxt/test-utils": "^4.0.3",
     "@types/node": "latest",
     "changelogen": "^0.6.2",
-    "eslint": "^10.5.0",
-    "nuxt": "^4.4.8",
+    "eslint": "^10.8.0",
+    "nuxt": "^4.5.1",
     "typescript": "~6.0.3",
-    "vitest": "^4.1.9",
-    "vue-tsc": "^3.3.5"
+    "vitest": "^4.1.10",
+    "vue-tsc": "^3.3.8"
   }
 }
