@@ -65,6 +65,10 @@ const {
 const _handleSubmit = async (e) => {
   const response = await formSubmit(e)
   if (!response) return
+  window.dataLayer?.push({
+    event: 'form_submit_success',
+    form_name: formSlug.value,
+  })
   emit('submit', { fields: response, emailTemplate })
 }
 </script>
