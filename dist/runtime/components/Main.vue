@@ -4,7 +4,7 @@ section.Form(ref="$el" :class="{submitting:_submitting,submitted:_submitted}")
       h4(v-html="$__('FormSubmitOkTitle')")
       p {{ $__('FormSubmitOkText') }}
   template(v-else)
-      form(@submit="_handleSubmit" :id="`form-element-${blok.name}`")
+      form(@submit="_handleSubmit")
           template(v-if="!_submitted" v-for="field of fields" :key="field._uid")
               StoryblokComponent( v-if="field.name" v-model:model="field.value" :blok="{component:field.component,originalblok:field}" :field="field" :formSlug="blok.scope || formSlug" @addEvalFunction="_addEvalFunction" v-editable="field")
               StoryblokComponent( v-else :blok="{component:field.component,originalblok:field}" :field="field" v-editable="field" :formSlug="blok.scope || formSlug" @addEvalFunction="_addEvalFunction")
