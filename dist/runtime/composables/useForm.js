@@ -36,10 +36,14 @@ export const useForm = (fields, uid) => {
     }
     return { payload, formData };
   };
-  const evalFields = (fields2) => {
+  const evalFields = (fields2, form = document) => {
     const handleErrorField = function(field) {
-      const classes = `.${field?.component}.${field?.name}`;
-      document.querySelector(`${classes} input, ${classes} textarea`)?.focus();
+      if (!field?.name) return;
+      const name = CSS.escape(field.name);
+      const input = form.querySelector(`[name="${name}"]`);
+      const wrapper = input?.closest(".input") || input || form.querySelector(`.${name}`);
+      wrapper?.scrollIntoView({ behavior: "smooth", block: "center" });
+      input?.focus({ preventScroll: true });
     };
     for (const field of fields2) {
       if (field.error) {
@@ -52,7 +56,7 @@ export const useForm = (fields, uid) => {
   };
   const formSubmit = async (event) => {
     for (const func of evalFunctions.value) func();
-    if (!evalFields(fields)) {
+    if (!evalFields(fields, event.currentTarget || void 0)) {
       event.preventDefault();
       return false;
     } else {
