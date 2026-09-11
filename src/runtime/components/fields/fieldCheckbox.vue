@@ -6,7 +6,7 @@
     label(v-if="field.label" :for="field.name")
         span(v-html="field.label+(field.required?'*':'')")
     .inputContent
-        label.text( @click="_handleLabelClick"  :for="field.name")
+        label.text(@click="_handleLabelClick")
             StoryblokRichText(:document="field.text")
         .fakeCheck(@click="_handleLabelClick")
         input(
